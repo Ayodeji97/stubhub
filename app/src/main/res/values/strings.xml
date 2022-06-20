@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Events</string>
+    <string name="city_str">City</string>
+    <string name="artiste_str">Artiste : %1$s</string>
+    <string name="price_str">Price</string>
+    <string name="dollar_sign">Price : $ %1$s</string>
+    <string name="search_not_found_str">No event found for your search</string>
+
+</resources>

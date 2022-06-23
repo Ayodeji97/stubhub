@@ -3,10 +3,10 @@ package com.financials.stubhubevents.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.financials.stubhubevents.business.model.Event
+import com.financials.stubhubevents.business.model.sample.WelcomeEvent
 import com.financials.stubhubevents.databinding.EventListItemBinding
 
-class MainAdapter() : ListAdapter<Event, MainViewHolder>(MainComparator()) {
+class MainAdapter() : ListAdapter<WelcomeEvent, MainViewHolder>(MainComparator()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val ui = EventListItemBinding.inflate(layoutInflater, parent, false)

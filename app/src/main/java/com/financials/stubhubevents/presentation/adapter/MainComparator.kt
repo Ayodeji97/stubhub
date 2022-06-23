@@ -1,12 +1,12 @@
 package com.financials.stubhubevents.presentation.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.financials.stubhubevents.business.model.Event
+import com.financials.stubhubevents.business.model.sample.WelcomeEvent
 
-class MainComparator : DiffUtil.ItemCallback<Event>() {
-    override fun areItemsTheSame(oldItem: Event, newItem: Event): Boolean =
+class MainComparator : DiffUtil.ItemCallback<WelcomeEvent>() {
+    override fun areItemsTheSame(oldItem: WelcomeEvent, newItem: WelcomeEvent): Boolean =
         oldItem.id == newItem.id
 
-    override fun areContentsTheSame(oldItem: Event, newItem: Event): Boolean =
+    override fun areContentsTheSame(oldItem: WelcomeEvent, newItem: WelcomeEvent): Boolean =
         oldItem == newItem
 }

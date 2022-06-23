@@ -45,6 +45,67 @@
     "id": "8",
     "city": "Boston",
     "artiste": "Travis Scott",
+    "price": "100"
+  },
+  {
+    "id": "9",
+    "city": "Memphis",
+    "artiste": "Lady Gaga",
+    "price": "200"
+  },
+  {
+    "id": "10",
+    "city": "Tucson",
+    "artiste": "Katy Perry",
+    "price": "230"
+  },
+
+  {
+    "id": "1",
+    "city": "New York",
+    "artiste": "Bruno Mars",
+    "price": "150"
+  },
+  {
+    "id": "2",
+    "city": "Los Angeles",
+    "artiste": "Taylor Swift",
+    "price": "340"
+  },
+  {
+    "id": "3",
+    "city": "Chicago",
+    "artiste": "Ariana Grande",
+    "price": "100"
+  },
+  {
+    "id": "4",
+    "city": "Houston",
+    "artiste": "Miley Cyrus",
+    "price": "80"
+  },
+  {
+    "id": "5",
+    "city": "Dallas",
+    "artiste": "Mariah Carey",
+    "price": "120"
+  },
+  {
+    "id": "6",
+    "city": "Austin",
+    "artiste": "Eminem",
+    "price": "160"
+  },
+  {
+    "id": "7",
+    "city": "San Francisco",
+    "artiste": "Drake",
+    "price": "100"
+  },
+  {
+    "id": "8",
+    "city": "Boston",
+    "artiste": "Travis Scott",
     "price": "250"
   },
   {

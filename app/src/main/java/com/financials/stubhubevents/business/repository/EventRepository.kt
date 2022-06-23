@@ -1,11 +1,15 @@
 package com.financials.stubhubevents.business.repository
 
-import android.content.Context
-import com.financials.stubhubevents.business.model.Event
+import com.financials.stubhubevents.business.model.sample.Welcome
+import com.financials.stubhubevents.business.model.sample.WelcomeEvent
 
 interface EventRepository {
-    fun getAllEvent () : List<Event>
-    fun getEventByCityName (cityQuery : String) : List<Event>
-    fun getEventByPriceAmount (priceQuery : String) : List<Event>
-    fun getEventByCityNameAndPriceAmount (cityQuery: String, priceQuery: String) : List<Event>
+
+    fun getAllEvent () : Welcome
+    fun recursiveEvents(welcome: Welcome) : List<WelcomeEvent>
+    fun getEventByCityName (cityQuery : String, events : List<WelcomeEvent>) : List<WelcomeEvent>
+    fun getEventByPriceAmount (priceQuery : String, events : List<WelcomeEvent>): List<WelcomeEvent>
+    fun getEventByCityNameAndPriceAmount (cityQuery: String, priceQuery: String,
+                                          events : List<WelcomeEvent> ) : List<WelcomeEvent>
+
 }

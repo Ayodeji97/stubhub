@@ -1,8 +1,10 @@
 package com.financials.stubhubevents.business.repository
 
 import android.content.Context
-import com.financials.stubhubevents.business.model.Event
-import com.financials.stubhubevents.business.utils.Constants.JSON_FILE_NAME
+import android.util.Log
+import com.financials.stubhubevents.business.model.sample.Welcome
+import com.financials.stubhubevents.business.model.sample.WelcomeEvent
+import com.financials.stubhubevents.business.utils.Constants.JSON_FILE_NEW_NAME
 import com.financials.stubhubevents.business.utils.getJsonDataFromAsset
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -15,24 +17,28 @@ class EventRepositoryImpl @Inject constructor(
 ) : EventRepository {
 
 
-    override fun getAllEvent(): List<Event> {
-        val jsonFileToString = getJsonDataFromAsset(context, JSON_FILE_NAME) ?: return emptyList()
+   private var eventList: MutableList<WelcomeEvent> = arrayListOf<WelcomeEvent>()
 
-        val eventListType = object : TypeToken<List<Event>>() {}.type
+    override fun getAllEvent(): Welcome {
+        val jsonFileToString = getJsonDataFromAsset(context, JSON_FILE_NEW_NAME)
+
+        val eventListType = object : TypeToken<Welcome>() {}.type
+
+        Log.d("Events", "Events:$eventListType")
+
         return gson.fromJson(jsonFileToString, eventListType)
     }
 
-    override fun getEventByCityName(cityQuery: String): List<Event> {
-        val getAllEvents = getAllEvent()
-        val filterByCityName = getAllEvents.filter { event ->
+
+    override fun getEventByCityName(cityQuery: String, events : List<WelcomeEvent>): List<WelcomeEvent> {
+        val filterByCityName = events.filter { event ->
             event.city.lowercase().contains(cityQuery.lowercase())
         }
         return filterByCityName
     }
 
-    override fun getEventByPriceAmount(priceQuery: String): List<Event> {
-        val getAllEvents = getAllEvent()
-        val filterByPrice = getAllEvents.filter { event ->
+    override fun getEventByPriceAmount(priceQuery: String, events : List<WelcomeEvent>): List<WelcomeEvent> {
+        val filterByPrice = events.filter { event ->
             event.price <= priceQuery.toInt()
         }
         return filterByPrice
@@ -40,12 +46,27 @@ class EventRepositoryImpl @Inject constructor(
 
     override fun getEventByCityNameAndPriceAmount(
         cityQuery: String,
-        priceQuery: String
-    ): List<Event> {
-        val cityQueries = getEventByCityName(cityQuery)
+        priceQuery: String,
+        events : List<WelcomeEvent>
+    ): List<WelcomeEvent> {
+        val cityQueries = getEventByCityName(cityQuery, events)
         val filterByCityAndPrice = cityQueries.filter { event ->
             event.price <= priceQuery.toInt()
         }
         return filterByCityAndPrice
     }
+
+
+
+   override fun recursiveEvents(welcome: Welcome) : List<WelcomeEvent> {
+        if (welcome.children.isEmpty()) {
+            eventList.addAll(welcome.events)
+        }
+
+        for (child in welcome.children) {
+            recursiveEvents(child)
+        }
+        return eventList.distinct()
+    }
+
 }
